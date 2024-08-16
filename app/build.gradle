@@ -17,6 +17,9 @@ version = '1.0.0-SNAPSHOT'
 
 repositories {
     // Use Maven Central for resolving dependencies.
+    maven {
+          	url "https://maven.pkg.github.com/ChristianHoesel/cyclonedxBom-gradle-issue"
+     }
     mavenCentral()
 }
 
