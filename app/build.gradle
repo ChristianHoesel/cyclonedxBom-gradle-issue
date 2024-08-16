@@ -9,6 +9,7 @@ plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
     id 'org.cyclonedx.bom' version '1.9.0'
+    id 'maven-publish'
 }
 
 repositories {
@@ -34,4 +35,22 @@ java {
 application {
     // Define the main class for the application.
     mainClass = 'org.example.App'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            name = 'github'
+            url = uri('https://maven.pkg.github.com/ChristianHoesel/cyclonedxBom-gradle-issue')
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.token") ?: System.getenv("TOKEN")
+            }
+        }
+    }
 }
