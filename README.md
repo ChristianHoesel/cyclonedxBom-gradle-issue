@@ -1,0 +1,1 @@
+# cyclonedxBom-gradle-issue
